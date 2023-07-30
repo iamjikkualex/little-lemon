@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+}
+
+/* Header */
+
+header {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 3fr;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+header > img {
+  justify-self: right;
+  width: 130px;
+  padding-left: 20px;
+}
+
+.nav-bar > ul {
+  display: inline-grid;
+  grid-template-columns: repeat(8, auto);
+  grid-template-rows: auto;
+  column-gap: 13px;
+  list-style-type: none;
+  font-family: Karla;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: #333333;
+}
+
+@media only screen and (max-width: 500px) {
+  .header-logo {
+    width: 80px;
+  }
+
+  .nav-bar > ul {
+    column-gap: 5px;
+    font-size: 10px;
+  }
+}
+
+/* Footer */
+
+footer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 3fr;
+  justify-content: center;
+  align-items: center;
+  background-color: #495E57;
+  padding: 15px;
+}
+
+footer nav {
+  display: inline-grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(5, auto);
+  font-family: Karla;
+  font-size: 10px;
+  font-weight: bold;
+  justify-self: left;
+}
+
+footer nav > ul {
+  list-style-type: none;
+  color: #FFFFFF;
+}
+
+footer nav > ul a {
+  text-decoration: none;
+  color: #FFFFFF;;
+  font-size: 9px;
+}
+
+footer > img {
+  justify-self: right;
+  width: 55px;
+}
+
+@media only screen and (max-width: 500px) {
+  footer > img {
+    width: 50px;
+  }
+
+  footer nav {
+    font-size: 8px;
+  }
+}
+
+
+
+/* Main */
+
+/* Hero Section */
+
+main .hero-section {
+  background-color: #495E57;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+main .hero-section h2, h3 {
+  font-family: 'Markazi Text';
+}
+
+main .hero-section h2 {
+  color: #F4CE14;
+  font-size: 40pt;
+  font-weight: normal;
+  margin-bottom: -15pt;
+}
+
+main .hero-section h3 {
+  color: #FFFFFF;
+  font-size: 20pt;
+  font-weight: normal;
+}
+
+main .hero-section p {
+  color: #FFFFFF;
+  font-family: 'Karla';
+  font-size: 12pt;
+  width: 250pt;
+  padding-top: 5pt;
+  padding-bottom: 10pt;
+}
+
+main .hero-section button {
+  background-color: #F4CE14;
+  color: #000000;
+  font-family: 'Karla';
+  font-weight: bold;
+  width: 115pt;
+  height: 22pt;
+  border-style: none;
+  border-radius: 8pt;
+}
+
+main .hero-section img {
+  height: 210pt;
+  border-radius: 8pt;
+  margin-bottom: -35pt;
+  margin-top: 30pt;
+}
+
+
+main .highlights {
+  height: 150pt;
+}
