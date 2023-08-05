@@ -1,0 +1,111 @@
+.highlights {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1.25rem;
+}
+
+.highlights-header {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-bottom: 1.875rem;
+}
+
+.highlights-header h2 {
+    line-height: 1;
+    font-family: 'Markazi Text';
+    font-weight: normal;
+    font-size: 2.5rem;
+}
+
+.special-card {
+    grid-column: auto;
+    grid-row: 2;
+    min-height: 31.25rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #EDEFEE;
+}
+
+.special-card:hover .special-card-image img {
+    transform: scale(1.1);
+}
+
+.special-card-image img {
+    width: 100%;
+    height: 12.5rem;
+    object-fit: cover;
+    margin-bottom: 0.9375rem;
+    transition: all ease-in-out 0.3s;
+}
+
+.special-card-header, .special-card-body {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.special-card-header {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: space-between;
+    margin-bottom: 1.875rem;
+}
+
+.special-card-header h3 {
+    font-size: 1.15rem;
+}
+
+.special-card-header span {
+    font-weight: bold;
+    color: #EE9972;
+}
+
+.special-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.special-card-body a {
+    font-weight: bold;
+}
+
+.special-card-body svg {
+    margin-left: 0.5rem;
+}
+
+/* Media Queries */
+
+@media (max-width: 960px) {
+    .highlights {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .highlights-header {
+        grid-column: 1 / 3;
+    }
+}
+
+@media (max-width: 692px) {
+    .highlights {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+    }
+
+    .highlights-header {
+        grid-column: 1 / 2;
+    }
+}
+
+@media (max-width: 960px) {
+    .special-card {
+        grid-row: auto;
+    }
+}

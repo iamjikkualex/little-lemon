@@ -62,6 +62,7 @@
     margin-right: 1rem;
 }
 
+/* Media Queries */
 
 @media (max-width: 927px) {
     .footer .container {
