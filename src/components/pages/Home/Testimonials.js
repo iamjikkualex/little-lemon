@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
-import customer01Photo from './assets/images/customer1.jpg';
-import customer02Photo from './assets/images/customer2.jpg';
-import customer03Photo from './assets/images/customer3.jpg';
-import customer04Photo from './assets/images/customer4.jpg';
+import customer01Photo from './assets/images/customer_01.jpg';
+import customer02Photo from './assets/images/customer_02.jpg';
+import customer03Photo from './assets/images/customer_03.jpg';
+import customer04Photo from './assets/images/customer_04.jpg';
 import './assets/styles/Testimonials.css';
 
 const reviews = [
