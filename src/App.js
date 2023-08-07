@@ -1,13 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/pages/Home/index';
-import Layout from "./components/layout/Main/index";
+import HomePage from './components/pages/Home/HomePage';
+import BookingPage from './components/pages/Reservations/BookingPage';
+import Layout from "./components/layout/Main/Main";
 import AppUtils from './utils/AppUtils';
 
 const App = () => {
   return (
     <Layout>
       <Routes>
-        <Route path={AppUtils.links.get('home').path} element={ <Home /> } />
+        <Route path={AppUtils.links.get('home').path} element={<HomePage />} />
+        <Route path={AppUtils.links.get('reservations').path} element={<BookingPage />} />
       </Routes>
     </Layout>
   );

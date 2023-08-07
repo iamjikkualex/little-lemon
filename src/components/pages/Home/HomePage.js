@@ -3,7 +3,7 @@ import Highlights from './Highlights';
 import Testimonials from './Testimonials';
 import About from './About';
 
-const Home = () => {
+const HomePage = () => {
     return (
         <>
             <Hero />
@@ -14,4 +14,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;
