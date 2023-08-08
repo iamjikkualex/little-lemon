@@ -3,18 +3,22 @@ import './assets/css/BookingForm.css';
 import AppUtils from '../../../utils/AppUtils';
 
 const minDate = new Date().toISOString().split('T')[0];
+const [minNoOfGuests, maxNoOfGuests] = [1, 10];
+const occasions = ['Birthday', 'Anniversary'];
 
 const updateTimes = (availableTimes, selectedDate) => {
     const response = AppUtils.fetchRandomTimingsAPI(new Date(selectedDate));
     return (response.length !== 0) ? response : availableTimes;
 };
 
-const initialAvailableTimes = AppUtils.fetchRandomTimingsAPI(new Date());
+const initializeTimes = initialAvailableTimes => [...initialAvailableTimes, ...AppUtils.fetchRandomTimingsAPI(new Date())];
 
 const BookingForm = () => {
-    const [availableTimes, dispatchOnDateChange] = useReducer(updateTimes, initialAvailableTimes);
+    const [availableTimes, dispatchOnDateChange] = useReducer(updateTimes, [], initializeTimes);
     const [bookingDate, setBookingDate] = useState(minDate);
-    const [bookingTime, setBookingTime] = useState(availableTimes[0])
+    const [bookingTime, setBookingTime] = useState(availableTimes[0]);
+    const [noOfGuests, setNoOfGuests] = useState(minNoOfGuests);
+    const [occasion, setOccasion] = useState(occasions[0]);
 
     const handleDateChange = e => {
         setBookingDate(e.target.value);
@@ -44,13 +48,32 @@ const BookingForm = () => {
                 )}
             </select>
             <label htmlFor="guests">Number of guests</label>
-            <input type="number" placeholder="1" min="1" max="10" id="guests" />
+            <input
+                type="number"
+                id="guests"
+                min={minNoOfGuests}
+                max={maxNoOfGuests}
+                value={noOfGuests}
+                onChange={e => setNoOfGuests(e.target.value)}
+            />
             <label htmlFor="occasion">Occasion</label>
-            <select id="occasion">
-                <option>Birthday</option>
-                <option>Anniversary</option>
+            <select
+                id="occasion"
+                value={occasion}
+                onChange={e => setOccasion(e.target.value)}
+            >
+                {occasions.map((occasion, index) =>
+                    <option key={index}>
+                        {occasion}
+                    </option>
+                )}
             </select>
-            <input type="submit" value="Make Your reservation" />
+            <button
+                className='button-primary'
+                type='submit'
+            >
+                Make Your Reservation
+            </button>
         </form>
     );
 };
