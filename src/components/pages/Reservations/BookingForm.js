@@ -1,76 +1,110 @@
-import { useReducer, useState } from 'react';
-import './assets/css/BookingForm.css';
+import { useState } from 'react';
 import AppUtils from '../../../utils/AppUtils';
+import { useNavigate } from 'react-router-dom';
 
 const minDate = new Date().toISOString().split('T')[0];
 const [minNoOfGuests, maxNoOfGuests] = [1, 10];
 const occasions = ['Birthday', 'Anniversary'];
 
-const updateTimes = (availableTimes, selectedDate) => {
-    const response = AppUtils.fetchRandomTimingsAPI(new Date(selectedDate));
-    return (response.length !== 0) ? response : availableTimes;
-};
-
-const initializeTimes = initialAvailableTimes => [...initialAvailableTimes, ...AppUtils.fetchRandomTimingsAPI(new Date())];
-
-const BookingForm = () => {
-    const [availableTimes, dispatchOnDateChange] = useReducer(updateTimes, [], initializeTimes);
+const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
     const [bookingDate, setBookingDate] = useState(minDate);
     const [bookingTime, setBookingTime] = useState(availableTimes[0]);
     const [noOfGuests, setNoOfGuests] = useState(minNoOfGuests);
     const [occasion, setOccasion] = useState(occasions[0]);
+    const navigate = useNavigate();
+
+    const isBookingDateValid = () => bookingDate !== '';
+    const invalidBookingDateErrorMsg = "Please choose a valid date";
+
+    const isBookingTimeValid = () => bookingTime !== '';
+    const invalidBookingTimeErrorMsg = "Please choose a valid time";
+
+    const isNoOfGuestsValid = () => noOfGuests !== '';
+    const invalidNoOfGuestsErrorMsg = "Please enter a number between 1 and 10";
+
+    const isOccasionValid = () => occasion !== '';
+    const invalidOccasionErrorMsg = "Please choose a valid occasion";
+
+    const areAllFieldsValid = () => isBookingDateValid() && isBookingTimeValid() && isNoOfGuestsValid() && isOccasionValid();
 
     const handleDateChange = e => {
         setBookingDate(e.target.value);
         dispatchOnDateChange(e.target.value);
     };
 
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        const response = AppUtils.submitAPI({bookingDate, bookingTime, noOfGuests, occasion});
+        if (response) navigate(AppUtils.links.get('confirmReservation').path);
+    };
+
     return (
-        <form style={{display: 'grid', maxWidth: '200px', gap: '20px'}}>
-            <label htmlFor="res-date">Choose date</label>
-            <input
-                type="date"
-                id="res-date"
-                min={minDate}
-                value={bookingDate}
-                onChange={handleDateChange}
-            />
-            <label htmlFor="res-time">Choose time</label>
-            <select
-                id="res-time"
-                value={bookingTime}
-                onChange={e => setBookingTime(e.target.value)}
-            >
-                {availableTimes.map(time =>
-                    <option key={time}>
-                        {time}
-                    </option>
-                )}
-            </select>
-            <label htmlFor="guests">Number of guests</label>
-            <input
-                type="number"
-                id="guests"
-                min={minNoOfGuests}
-                max={maxNoOfGuests}
-                value={noOfGuests}
-                onChange={e => setNoOfGuests(e.target.value)}
-            />
-            <label htmlFor="occasion">Occasion</label>
-            <select
-                id="occasion"
-                value={occasion}
-                onChange={e => setOccasion(e.target.value)}
-            >
-                {occasions.map((occasion, index) =>
-                    <option key={index}>
-                        {occasion}
-                    </option>
-                )}
-            </select>
+        <form style={{display: 'grid', maxWidth: '200px', gap: '20px'}} onSubmit={handleFormSubmit}>
+            <div className='form-field'>
+                <label htmlFor="res-date">Choose date</label>
+                <input
+                    type="date"
+                    id="res-date"
+                    name="res-date"
+                    min={minDate}
+                    value={bookingDate}
+                    onChange={handleDateChange}
+                    required
+                />
+                {(!isBookingDateValid() && invalidBookingDateErrorMsg) ? <p>{invalidBookingDateErrorMsg}</p> : null}
+            </div>
+            <div className='form-field'>
+                <label htmlFor="res-time">Choose time</label>
+                <select
+                    id="res-time"
+                    name="res-time"
+                    value={bookingTime}
+                    onChange={e => setBookingTime(e.target.value)}
+                    required
+                >
+                    {availableTimes.map(time =>
+                        <option key={time}>
+                            {time}
+                        </option>
+                    )}
+                </select>
+                {(!isBookingTimeValid() && invalidBookingTimeErrorMsg) ? <p>{invalidBookingTimeErrorMsg}</p> : null}
+            </div>
+            <div className='form-field'>
+                <label htmlFor="guests">Number of guests</label>
+                <input
+                    type="number"
+                    id="guests"
+                    name="guests"
+                    min={minNoOfGuests}
+                    max={maxNoOfGuests}
+                    value={noOfGuests}
+                    onChange={e => setNoOfGuests(e.target.value)}
+                    required
+                />
+                {(!isNoOfGuestsValid() && invalidNoOfGuestsErrorMsg) ? <p>{invalidNoOfGuestsErrorMsg}</p> : null}
+            </div>
+            <div className='form-field'>
+                <label htmlFor="occasion">Occasion</label>
+                <select
+                    id="occasion"
+                    name="occasion"
+                    value={occasion}
+                    onChange={e => setOccasion(e.target.value)}
+                    required
+                >
+                    {occasions.map((occasion, index) =>
+                        <option key={index}>
+                            {occasion}
+                        </option>
+                    )}
+                </select>
+                {(!isOccasionValid() && invalidOccasionErrorMsg) ? <p>{invalidOccasionErrorMsg}</p> : null}
+            </div>
             <button
                 className='button-primary'
                 type='submit'
+                disabled={!areAllFieldsValid()}
             >
                 Make Your Reservation
             </button>

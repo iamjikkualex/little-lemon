@@ -22,7 +22,8 @@ const AppUtils = {
             if (random() < 0.5) result.push(i + ':00');
 
         return result;
-    }
+    },
+    submitAPI: (formData) => true,
 };
 
 export default AppUtils;
