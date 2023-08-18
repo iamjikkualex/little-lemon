@@ -6,7 +6,7 @@ const minDate = new Date().toISOString().split('T')[0];
 const [minNoOfGuests, maxNoOfGuests] = [1, 10];
 const occasions = ['Birthday', 'Anniversary'];
 
-const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
+const BookingForm = ({availableTimes, dispatchOnDateChange, submitData}) => {
     const [bookingDate, setBookingDate] = useState(minDate);
     const [bookingTime, setBookingTime] = useState(availableTimes[0]);
     const [noOfGuests, setNoOfGuests] = useState(minNoOfGuests);
@@ -34,14 +34,13 @@ const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        const response = AppUtils.submitAPI({bookingDate, bookingTime, noOfGuests, occasion});
-        if (response) navigate(AppUtils.links.get('confirmReservation').path);
+        submitData({bookingDate, bookingTime, noOfGuests, occasion});
     };
 
     return (
         <form style={{display: 'grid', maxWidth: '200px', gap: '20px'}} onSubmit={handleFormSubmit}>
             <div className='form-field'>
-                <label htmlFor="res-date">Choose date</label>
+                <label htmlFor="res-date">Choose Date</label>
                 <input
                     type="date"
                     id="res-date"
@@ -54,7 +53,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
                 {(!isBookingDateValid() && invalidBookingDateErrorMsg) ? <p>{invalidBookingDateErrorMsg}</p> : null}
             </div>
             <div className='form-field'>
-                <label htmlFor="res-time">Choose time</label>
+                <label htmlFor="res-time">Choose Time</label>
                 <select
                     id="res-time"
                     name="res-time"
@@ -63,7 +62,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
                     required
                 >
                     {availableTimes.map(time =>
-                        <option key={time}>
+                        <option data-testid="booking-time-option" key={time}>
                             {time}
                         </option>
                     )}
@@ -71,7 +70,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange}) => {
                 {(!isBookingTimeValid() && invalidBookingTimeErrorMsg) ? <p>{invalidBookingTimeErrorMsg}</p> : null}
             </div>
             <div className='form-field'>
-                <label htmlFor="guests">Number of guests</label>
+                <label htmlFor="guests">Number of Guests</label>
                 <input
                     type="number"
                     id="guests"

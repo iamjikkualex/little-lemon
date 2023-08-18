@@ -18,8 +18,10 @@ const AppUtils = {
         let random = () => (s = s * a % m) / m;
         let result = [];
 
-        for (let i = 17; i <= 23; i++)
+        for (let i = 17; i <= 23; i++) {
             if (random() < 0.5) result.push(i + ':00');
+            if (random() < 0.5) result.push(i + ':30');
+        }
 
         return result;
     },

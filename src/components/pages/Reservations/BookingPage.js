@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookingForm from "./BookingForm";
 import AppUtils from "../../../utils/AppUtils";
 import './assets/css/BookingForm.css';
@@ -12,11 +13,17 @@ const initializeTimes = initialAvailableTimes => [...initialAvailableTimes, ...A
 
 const BookingPage = () => {
     const [availableTimes, dispatchOnDateChange] = useReducer(updateTimes, [], initializeTimes);
+    const navigate = useNavigate();
+
+    const submitData = formData => {
+        const response = AppUtils.submitAPI(formData);
+        if (response) navigate(AppUtils.links.get('confirmReservation').path);
+    };
 
     return (
         <div className="bookings">
             <h2>Reserve a Table</h2>
-            <BookingForm availableTimes={availableTimes} dispatchOnDateChange={dispatchOnDateChange} />
+            <BookingForm availableTimes={availableTimes} dispatchOnDateChange={dispatchOnDateChange} submitData={submitData} />
         </div>
     );
 };
