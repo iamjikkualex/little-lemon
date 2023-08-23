@@ -1,6 +1,6 @@
-// App Utils for Little Lemon Website
+// App Constants for Little Lemon Website
 
-const AppUtils = {
+const constants = {
     links: new Map([
         ['home', {name: 'Home', path: '/', isLinkVisibleOnNav: true}],
         ['about', {name: 'About', path: '/about', isLinkVisibleOnNav: true}],
@@ -10,22 +10,6 @@ const AppUtils = {
         ['login', {name: 'Login', path: '/login', isLinkVisibleOnNav: true}],
         ['confirmReservation', {name: 'Confirm Reservation', path: '/confirm-reservation', isLinkVisibleOnNav: false}]
     ]),
-    fetchRandomTimingsAPI: (selectedDate) => {
-        const m = 2 ** 35 - 31;
-        const a = 185852;
-        let seed = selectedDate.getDate();
-        let s = seed % m;
-        let random = () => (s = s * a % m) / m;
-        let result = [];
-
-        for (let i = 17; i <= 23; i++) {
-            if (random() < 0.5) result.push(i + ':00');
-            if (random() < 0.5) result.push(i + ':30');
-        }
-
-        return result;
-    },
-    submitAPI: (formData) => true,
 };
 
-export default AppUtils;
+export default constants;

@@ -4,7 +4,7 @@ import { faMotorcycle } from '@fortawesome/free-solid-svg-icons';
 import greekSaladImage from './assets/images/greek-salad.jpg';
 import bruschettaImage from './assets/images/bruschetta.jpg';
 import lemonDessertImage from './assets/images/lemon-dessert.jpg';
-import AppUtils from '../../../utils/AppUtils';
+import AppConstants from '../../../common/constants';
 import './assets/styles/Highlights.css';
 
 const specials = [
@@ -33,7 +33,7 @@ const Highlights = () => {
         <section className="container grid highlights">
             <div className="highlights-header">
                 <h2>Specials</h2>
-                <Link className='button-primary' to={AppUtils.links.get('orderOnline').path}>
+                <Link className='button-primary' to={AppConstants.links.get('orderOnline').path}>
                     Online Menu
                 </Link>
             </div>
@@ -48,7 +48,7 @@ const Highlights = () => {
                     </div>
                     <div className='special-card-body'>
                         <p>{special.description}</p>
-                        <Link to={AppUtils.links.get('orderOnline').path}>
+                        <Link to={AppConstants.links.get('orderOnline').path}>
                             Order a Delivery <FontAwesomeIcon icon={faMotorcycle} />
                         </Link>
                     </div>

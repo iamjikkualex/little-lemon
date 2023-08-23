@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import AppUtils from '../../../utils/AppUtils';
+import AppConstants from '../../../common/constants';
 import heroImage from './assets/images/restaurant-food.jpg';
 import './assets/styles/Hero.css';
 
@@ -11,7 +11,7 @@ const Hero = () => {
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <Link className='button-primary' to={AppUtils.links.get('reservations').path}>
+                    <Link className='button-primary' to={AppConstants.links.get('reservations').path}>
                         Reserve a Table
                     </Link>
                 </div>

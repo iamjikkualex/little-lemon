@@ -1,17 +1,14 @@
 import { useState } from 'react';
-import AppUtils from '../../../utils/AppUtils';
-import { useNavigate } from 'react-router-dom';
 
 const minDate = new Date().toISOString().split('T')[0];
 const [minNoOfGuests, maxNoOfGuests] = [1, 10];
 const occasions = ['Birthday', 'Anniversary'];
 
-const BookingForm = ({availableTimes, dispatchOnDateChange, submitData}) => {
+const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
     const [bookingDate, setBookingDate] = useState(minDate);
     const [bookingTime, setBookingTime] = useState(availableTimes[0]);
     const [noOfGuests, setNoOfGuests] = useState(minNoOfGuests);
     const [occasion, setOccasion] = useState(occasions[0]);
-    const navigate = useNavigate();
 
     const isBookingDateValid = () => bookingDate !== '';
     const invalidBookingDateErrorMsg = "Please choose a valid date";
@@ -34,7 +31,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitData}) => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        submitData({bookingDate, bookingTime, noOfGuests, occasion});
+        submitForm({bookingDate, bookingTime, noOfGuests, occasion});
     };
 
     return (
