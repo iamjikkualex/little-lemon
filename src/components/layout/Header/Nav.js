@@ -6,7 +6,7 @@ import AppConstants from '../../../common/constants';
 import headerLogo from '../assets/images/header-logo.png';
 import '../assets/styles/Header.css';
 
-const navLinks = Array.from(AppConstants.links.values()).filter(link => link.isLinkVisibleOnNav);
+const navLinks = Array.from(AppConstants.LINKS.values()).filter(link => link.isLinkVisibleOnNav);
 
 const Nav = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -14,7 +14,7 @@ const Nav = () => {
 
     return (
         <nav className='container grid nav-bar'>
-            <Link className='nav-bar-logo' to={AppConstants.links.get('home').path}>
+            <Link className='nav-bar-logo' to={AppConstants.LINKS.get('home').path}>
                 <img src={headerLogo} alt='Little Lemon Header Logo' />
             </Link>
             <button className='nav-bar-hamburger' type='button' onClick={() => setIsNavExpanded(!isNavExpanded)}>

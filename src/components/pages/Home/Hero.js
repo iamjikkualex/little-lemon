@@ -11,7 +11,7 @@ const Hero = () => {
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
                     <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <Link className='button-primary' to={AppConstants.links.get('reservations').path}>
+                    <Link className='button-primary' to={AppConstants.LINKS.get('reservations').path}>
                         Reserve a Table
                     </Link>
                 </div>

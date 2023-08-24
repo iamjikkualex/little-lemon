@@ -33,7 +33,7 @@ const Highlights = () => {
         <section className="container grid highlights">
             <div className="highlights-header">
                 <h2>Specials</h2>
-                <Link className='button-primary' to={AppConstants.links.get('orderOnline').path}>
+                <Link className='button-primary' to={AppConstants.LINKS.get('orderOnline').path}>
                     Online Menu
                 </Link>
             </div>
@@ -48,7 +48,7 @@ const Highlights = () => {
                     </div>
                     <div className='special-card-body'>
                         <p>{special.description}</p>
-                        <Link to={AppConstants.links.get('orderOnline').path}>
+                        <Link to={AppConstants.LINKS.get('orderOnline').path}>
                             Order a Delivery <FontAwesomeIcon icon={faMotorcycle} />
                         </Link>
                     </div>

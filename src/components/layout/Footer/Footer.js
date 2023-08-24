@@ -6,7 +6,7 @@ import AppConstants from '../../../common/constants';
 import FooterLogo from '../assets/images/footer-logo.png';
 import '../assets/styles/Footer.css';
 
-const navLinks = Array.from(AppConstants.links.values()).filter(link => link.isLinkVisibleOnNav);
+const navLinks = Array.from(AppConstants.LINKS.values()).filter(link => link.isLinkVisibleOnNav);
 
 const contacts = [
     { icon: faLocationDot, info: 'XYZ Street, Chicago, IL', },

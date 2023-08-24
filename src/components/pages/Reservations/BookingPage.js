@@ -18,7 +18,7 @@ const BookingPage = () => {
 
     const submitForm = formData => {
         const response = submitAPI(formData);
-        if (response) navigate(AppConstants.links.get('confirmReservation').path);
+        if (response) navigate(AppConstants.LINKS.get('confirmReservation').path);
     };
 
     return (

@@ -9,9 +9,9 @@ const App = () => {
   return (
     <Layout>
       <Routes>
-        <Route path={AppConstants.links.get('home').path} element={<HomePage />} />
-        <Route path={AppConstants.links.get('reservations').path} element={<BookingPage />} />
-        <Route path={AppConstants.links.get('confirmReservation').path} element={<ConfirmedBooking />} />
+        <Route path={AppConstants.LINKS.get('home').path} element={<HomePage />} />
+        <Route path={AppConstants.LINKS.get('reservations').path} element={<BookingPage />} />
+        <Route path={AppConstants.LINKS.get('confirmReservation').path} element={<ConfirmedBooking />} />
       </Routes>
     </Layout>
   );
