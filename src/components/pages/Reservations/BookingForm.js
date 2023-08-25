@@ -46,7 +46,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                     onChange={handleDateChange}
                     required
                 />
-                {(!isBookingDateValid() && invalidBookingDateErrorMsg) ? <p>{invalidBookingDateErrorMsg}</p> : null}
+                {(!isBookingDateValid() && invalidBookingDateErrorMsg) ? <p data-testid='error-msg'>{invalidBookingDateErrorMsg}</p> : null}
             </div>
             <div className={AppConstants.HTML_TEXTS.className.formField}>
                 <label htmlFor="res-time">{AppConstants.BOOKING_FORM_TEXTS.get('chooseTime').text}</label>
@@ -77,7 +77,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                     onChange={e => setNoOfGuests(e.target.value)}
                     required
                 />
-                {(!isNoOfGuestsValid() && invalidNoOfGuestsErrorMsg) ? <p>{invalidNoOfGuestsErrorMsg}</p> : null}
+                {(!isNoOfGuestsValid() && invalidNoOfGuestsErrorMsg) ? <p data-testid='error-msg'>{invalidNoOfGuestsErrorMsg}</p> : null}
             </div>
             <div className={AppConstants.HTML_TEXTS.className.formField}>
                 <label htmlFor="occasion">{AppConstants.BOOKING_FORM_TEXTS.get('occasion').text}</label>
@@ -89,7 +89,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                     required
                 >
                     {AppConstants.OCCASIONS.map((occasion, index) =>
-                        <option key={index}>
+                        <option data-testid='booking-occasion-option' key={index}>
                             {occasion}
                         </option>
                     )}
@@ -97,6 +97,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 {(!isOccasionValid() && invalidOccasionErrorMsg) ? <p>{invalidOccasionErrorMsg}</p> : null}
             </div>
             <button
+                aria-label='On Click'
                 className={AppConstants.HTML_TEXTS.className.buttonPrimary}
                 type={AppConstants.HTML_TEXTS.type.submit}
                 disabled={!areAllFieldsValid()}
