@@ -77,11 +77,29 @@ describe('Booking Form', () => {
         fireEvent.change(chooseDate, {target: {value: ''}});
         fireEvent.blur(chooseDate);
 
-        const errorMsg = screen.getByTestId('error-msg');
+        const errorMsg = screen.getByTestId('date-error-msg');
         const submitButton = screen.getByRole('button');
 
         expect(errorMsg).toBeInTheDocument();
         expect(errorMsg).toHaveTextContent('Please choose a valid date within six months');
+
+        expect(submitButton).toBeDisabled();
+    });
+
+    test('Should display an error message and disable submit button when Choose Time field is empty', () => {
+        render(
+            <BookingForm availableTimes={availableTimes} dispatchOnDateChange={dispatchOnDateChange} submitForm={submitForm} />
+        );
+
+        const chooseTime = screen.getByLabelText(/Choose Time/);
+        fireEvent.change(chooseTime, {target: {value: ''}});
+        fireEvent.blur(chooseTime);
+
+        const errorMsg = screen.getByTestId('time-error-msg');
+        const submitButton = screen.getByRole('button');
+
+        expect(errorMsg).toBeInTheDocument();
+        expect(errorMsg).toHaveTextContent('Please choose a valid time');
 
         expect(submitButton).toBeDisabled();
     });
@@ -95,11 +113,29 @@ describe('Booking Form', () => {
         fireEvent.change(noOfGuests, {target: {value: ''}});
         fireEvent.blur(noOfGuests);
 
-        const errorMsg = screen.getByTestId('error-msg');
+        const errorMsg = screen.getByTestId('guests-error-msg');
         const submitButton = screen.getByRole('button');
 
         expect(errorMsg).toBeInTheDocument();
         expect(errorMsg).toHaveTextContent('Please enter a number between 1 and 10');
+
+        expect(submitButton).toBeDisabled();
+    });
+
+    test('Should display an error message and disable submit button when Occasion field is empty', () => {
+        render(
+            <BookingForm availableTimes={availableTimes} dispatchOnDateChange={dispatchOnDateChange} submitForm={submitForm} />
+        );
+
+        const occasion = screen.getByLabelText(/Occasion/);
+        fireEvent.change(occasion, {target: {value: ''}});
+        fireEvent.blur(occasion);
+
+        const errorMsg = screen.getByTestId('occasion-error-msg');
+        const submitButton = screen.getByRole('button');
+
+        expect(errorMsg).toBeInTheDocument();
+        expect(errorMsg).toHaveTextContent('Please choose a valid occasion');
 
         expect(submitButton).toBeDisabled();
     });

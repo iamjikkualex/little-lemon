@@ -1,6 +1,7 @@
 .nav-bar {
     grid-template-columns: auto auto auto;
     min-height: 6.25rem;
+    font-weight: bold;
 }
 
 .nav-bar-logo {
@@ -57,7 +58,7 @@
 }
 
 .current-location, .nav-bar-links a:hover, .nav-bar-links a:focus {
-    background-color: #F4CE14;
+    color: #F4CE14;
 }
 
 /* Media Queries */

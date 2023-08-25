@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import BookingForm from "./BookingForm";
 import AppConstants from "../../../common/constants";
 import { fetchAPI, submitAPI } from "../../../common/api";
-import './assets/css/BookingForm.css';
+import './assets/styles/BookingForm.css';
 
 const updateTimes = (availableTimes, selectedDate) => {
     const response = fetchAPI(new Date(selectedDate));
-    return (response.length !== 0) ? response : availableTimes;
+    return (response.length !== AppConstants.ZERO) ? response : availableTimes;
 };
 
 const initializeTimes = initialAvailableTimes => [...initialAvailableTimes, ...fetchAPI(new Date())];
@@ -22,8 +22,8 @@ const BookingPage = () => {
     };
 
     return (
-        <div className="bookings">
-            <h2>Reserve a Table</h2>
+        <div className={AppConstants.HTML_TEXTS.className.bookings}>
+            <h2>{AppConstants.BOOKING_PAGE_TEXTS.get('reserveTable').text}</h2>
             <BookingForm availableTimes={availableTimes} dispatchOnDateChange={dispatchOnDateChange} submitForm={submitForm} />
         </div>
     );

@@ -46,58 +46,76 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                     onChange={handleDateChange}
                     required
                 />
-                {(!isBookingDateValid() && invalidBookingDateErrorMsg) ? <p data-testid='error-msg'>{invalidBookingDateErrorMsg}</p> : null}
+                {
+                  (!isBookingDateValid()
+                  && invalidBookingDateErrorMsg)
+                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.dateErrorMsg}>{invalidBookingDateErrorMsg}</p>
+                  : AppConstants.NULL
+                }
             </div>
             <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor="res-time">{AppConstants.BOOKING_FORM_TEXTS.get('chooseTime').text}</label>
+                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.resTime}>{AppConstants.BOOKING_FORM_TEXTS.get('chooseTime').text}</label>
                 <select
-                    id="res-time"
-                    name="res-time"
+                    id={AppConstants.HTML_TEXTS.id.resTime}
+                    name={AppConstants.HTML_TEXTS.name.resTime}
                     value={bookingTime}
                     onChange={e => setBookingTime(e.target.value)}
                     required
                 >
                     {availableTimes.map(time =>
-                        <option data-testid="booking-time-option" key={time}>
+                        <option data-testid={AppConstants.HTML_TEXTS.dataTestId.bookingTimeOption} key={time}>
                             {time}
                         </option>
                     )}
                 </select>
-                {(!isBookingTimeValid() && invalidBookingTimeErrorMsg) ? <p>{invalidBookingTimeErrorMsg}</p> : null}
+                {
+                  (!isBookingTimeValid()
+                  && invalidBookingTimeErrorMsg)
+                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.timeErrorMsg}>{invalidBookingTimeErrorMsg}</p>
+                  : AppConstants.NULL
+                }
             </div>
             <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor="guests">{AppConstants.BOOKING_FORM_TEXTS.get('noOfGuests').text}</label>
+                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.guests}>{AppConstants.BOOKING_FORM_TEXTS.get('noOfGuests').text}</label>
                 <input
                     type={AppConstants.HTML_TEXTS.type.number}
-                    id="guests"
-                    name="guests"
+                    id={AppConstants.HTML_TEXTS.id.guests}
+                    name={AppConstants.HTML_TEXTS.name.guests}
                     min={AppConstants.MIN_NO_OF_GUESTS}
                     max={AppConstants.MAX_NO_OF_GUESTS}
                     value={noOfGuests}
                     onChange={e => setNoOfGuests(e.target.value)}
                     required
                 />
-                {(!isNoOfGuestsValid() && invalidNoOfGuestsErrorMsg) ? <p data-testid='error-msg'>{invalidNoOfGuestsErrorMsg}</p> : null}
+                {
+                  (!isNoOfGuestsValid()
+                  && invalidNoOfGuestsErrorMsg)
+                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.guestsErrorMsg}>{invalidNoOfGuestsErrorMsg}</p>
+                  : AppConstants.NULL}
             </div>
             <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor="occasion">{AppConstants.BOOKING_FORM_TEXTS.get('occasion').text}</label>
+                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.occasion}>{AppConstants.BOOKING_FORM_TEXTS.get('occasion').text}</label>
                 <select
-                    id="occasion"
-                    name="occasion"
+                    id={AppConstants.HTML_TEXTS.id.occasion}
+                    name={AppConstants.HTML_TEXTS.name.occasion}
                     value={occasion}
                     onChange={e => setOccasion(e.target.value)}
                     required
                 >
                     {AppConstants.OCCASIONS.map((occasion, index) =>
-                        <option data-testid='booking-occasion-option' key={index}>
+                        <option data-testid={AppConstants.HTML_TEXTS.dataTestId.bookingOccasionOption} key={index}>
                             {occasion}
                         </option>
                     )}
                 </select>
-                {(!isOccasionValid() && invalidOccasionErrorMsg) ? <p>{invalidOccasionErrorMsg}</p> : null}
+                {
+                  (!isOccasionValid()
+                  && invalidOccasionErrorMsg)
+                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.occasionErrorMsg}>{invalidOccasionErrorMsg}</p>
+                  : AppConstants.NULL}
             </div>
             <button
-                aria-label='On Click'
+                aria-label={AppConstants.HTML_TEXTS.ariaLabel.onClick}
                 className={AppConstants.HTML_TEXTS.className.buttonPrimary}
                 type={AppConstants.HTML_TEXTS.type.submit}
                 disabled={!areAllFieldsValid()}
