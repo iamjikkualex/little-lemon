@@ -27,11 +27,11 @@ const socials = [
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="container grid">
-                <img className="footer-logo" src={FooterLogo} alt='Little Lemon Footer Logo' />
-                <nav className='footer-nav'>
-                    <h4>Browse Little Lemon</h4>
+        <footer className={HTML_TEXTS.className.footer}>
+            <div className={HTML_TEXTS.className.containerGrid}>
+                <img className={HTML_TEXTS.className.footerLogo} src={FooterLogo} alt={HTML_TEXTS.alt.footerLogo} />
+                <nav className={HTML_TEXTS.className.footerNav}>
+                    <h4>{FOOTER_TEXTS.get('footerHeadings').browse}</h4>
                     <ul>
                         {navLinks.map((navLink, index) =>
                             <li key={index}>
@@ -40,8 +40,8 @@ const Footer = () => {
                         )}
                     </ul>
                 </nav>
-                <div className='footer-contact'>
-                    <h4>Contact Us</h4>
+                <div className={HTML_TEXTS.className.footerContact}>
+                    <h4>{FOOTER_TEXTS.get('footerHeadings').contact}</h4>
                     <address>
                         {contacts.map((contact, index) =>
                             <p key={index}>
@@ -50,11 +50,11 @@ const Footer = () => {
                         )}
                     </address>
                 </div>
-                <div className='footer-social'>
-                    <h4>Social Media</h4>
+                <div className={HTML_TEXTS.className.footerSocial}>
+                    <h4>{FOOTER_TEXTS.get('footerHeadings').social}</h4>
                     {socials.map((social, index) =>
-                        <a key={index} href={`https://www.${social.name}.com`} target='_blank' rel='noreferrer'>
-                            <FontAwesomeIcon icon={social.icon} size='lg' />
+                        <a key={index} href={`https://www.${social.name}.com`} target={HTML_TEXTS.target.blank} rel={HTML_TEXTS.rel.noreferrer}>
+                            <FontAwesomeIcon icon={social.icon} size={AppConstants.SIZE.lg} />
                         </a>
                     )}
                 </div>

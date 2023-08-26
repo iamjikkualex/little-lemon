@@ -4,6 +4,8 @@ const APP_CONSTANTS = {
     EMPTY: '',
     NULL: null,
     ZERO: 0,
+    ONE: 1,
+    TEN: 10,
     MIN_NO_OF_GUESTS: 1,
     MAX_NO_OF_GUESTS: 10,
     LINKS: new Map([
@@ -17,6 +19,7 @@ const APP_CONSTANTS = {
     ]),
     OCCASIONS: ['Birthday', 'Anniversary'],
     FOOTER_TEXTS: new Map([
+        ['footerHeadings', {browse: 'Browse Little Lemon', contact: 'Contact Us', social: 'Social Media'}],
         ['contacts', {location: 'XYZ Street, Chicago, IL', phone: '(321) 456-7890', email: 'contact@littlelemon.com'}],
         ['socials', {facebook: 'facebook', twitter: 'twitter', instagram: 'instagram', youtube: 'youtube'}],
     ]),
@@ -69,11 +72,17 @@ const APP_CONSTANTS = {
         ['notFound', {text: 'Page Not Found'}],
     ]),
     SIZE: {
+        twoX: '2x',
         threeX: '3x',
         xs: 'xs',
+        lg: 'lg',
     },
     HTML_TEXTS: {
         className: {
+            navBarLogo: 'nav-bar-logo',
+            navBarHamburger: 'nav-bar-hamburger',
+            navBarLinks: 'nav-bar-links',
+            currentLocation: 'current-location',
             hero: 'hero',
             heroInformation: 'hero-information',
             heroImage: 'hero-image',
@@ -91,7 +100,14 @@ const APP_CONSTANTS = {
             aboutChefsImage: 'about-chefs-image',
             chefImageTop: 'chef-image-top',
             chefImageBottom: 'chef-image-bottom',
+            footer: 'footer',
+            footerLogo: 'footer-logo',
+            footerNav: 'footer-nav',
+            footerContact: 'footer-contact',
+            footerSocial: 'footer-social',
+            navBarLinksExpanded: 'nav-bar-links expanded',
             containerGrid: 'container grid',
+            navNav: 'container grid nav-bar',
             aboutSection: 'container grid about',
             highlightsSection: 'container grid highlights',
             confirmedBookingDiv: 'container confirmed-booking',
@@ -114,6 +130,7 @@ const APP_CONSTANTS = {
             date: 'date',
             number: 'number',
             submit: 'submit',
+            button: 'button',
         },
         htmlFor: {
             resDate: 'res-date',
@@ -134,7 +151,15 @@ const APP_CONSTANTS = {
         },
         alt: {
             restaurantFood: 'Restaurant Food',
-            chefsMarioAndAdrian: 'Chefs Mario and Adrian'
+            chefsMarioAndAdrian: 'Chefs Mario and Adrian',
+            headerLogo: 'Little Lemon Header Logo',
+            footerLogo: 'Little Lemon Footer Logo',
+        },
+        target: {
+            blank: '_blank',
+        },
+        rel: {
+            noreferrer: 'noreferrer',
         }
     }
 };

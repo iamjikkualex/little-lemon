@@ -4,6 +4,8 @@ import AppConstants from '../../../common/constants';
 
 const HTML_TEXTS = AppConstants.HTML_TEXTS;
 const BOOKING_FORM_TEXTS = AppConstants.BOOKING_FORM_TEXTS;
+const EMPTY = AppConstants.EMPTY;
+const NULL = AppConstants.NULL;
 
 const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
     const [bookingDate, setBookingDate] = useState(getMinDate());
@@ -11,16 +13,16 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
     const [noOfGuests, setNoOfGuests] = useState(AppConstants.MIN_NO_OF_GUESTS);
     const [occasion, setOccasion] = useState(AppConstants.OCCASIONS[0]);
 
-    let isBookingDateValid = () => bookingDate !== AppConstants.EMPTY && bookingDate >= getMinDate() && bookingDate <= getMaxDate();
+    let isBookingDateValid = () => bookingDate !== EMPTY && bookingDate >= getMinDate() && bookingDate <= getMaxDate();
     let invalidBookingDateErrorMsg = BOOKING_FORM_TEXTS.get('invalidBookingDateErrorMsg').text;
 
-    let isBookingTimeValid = () => bookingTime !== AppConstants.EMPTY;
+    let isBookingTimeValid = () => bookingTime !== EMPTY;
     let invalidBookingTimeErrorMsg = BOOKING_FORM_TEXTS.get('invalidBookingTimeErrorMsg').text;
 
-    let isNoOfGuestsValid = () => noOfGuests !== AppConstants.EMPTY && noOfGuests >= 1 && noOfGuests <= 10;
+    let isNoOfGuestsValid = () => noOfGuests !== EMPTY && noOfGuests >= AppConstants.ONE && noOfGuests <= AppConstants.TEN;
     let invalidNoOfGuestsErrorMsg = BOOKING_FORM_TEXTS.get('invalidNoOfGuestsErrorMsg').text;
 
-    let isOccasionValid = () => occasion !== AppConstants.EMPTY;
+    let isOccasionValid = () => occasion !== EMPTY;
     let invalidOccasionErrorMsg = BOOKING_FORM_TEXTS.get('invalidOccasionErrorMsg').text;
 
     const areAllFieldsValid = () => isBookingDateValid() && isBookingTimeValid() && isNoOfGuestsValid() && isOccasionValid();
@@ -53,7 +55,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                   (!isBookingDateValid()
                   && invalidBookingDateErrorMsg)
                   ? <p data-testid={HTML_TEXTS.dataTestId.dateErrorMsg}>{invalidBookingDateErrorMsg}</p>
-                  : AppConstants.NULL
+                  : NULL
                 }
             </div>
             <div className={HTML_TEXTS.className.formField}>
@@ -75,7 +77,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                   (!isBookingTimeValid()
                   && invalidBookingTimeErrorMsg)
                   ? <p data-testid={HTML_TEXTS.dataTestId.timeErrorMsg}>{invalidBookingTimeErrorMsg}</p>
-                  : AppConstants.NULL
+                  : NULL
                 }
             </div>
             <div className={HTML_TEXTS.className.formField}>
@@ -94,7 +96,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                   (!isNoOfGuestsValid()
                   && invalidNoOfGuestsErrorMsg)
                   ? <p data-testid={HTML_TEXTS.dataTestId.guestsErrorMsg}>{invalidNoOfGuestsErrorMsg}</p>
-                  : AppConstants.NULL}
+                  : NULL}
             </div>
             <div className={HTML_TEXTS.className.formField}>
                 <label htmlFor={HTML_TEXTS.htmlFor.occasion}>{BOOKING_FORM_TEXTS.get('occasion').text}</label>
@@ -115,7 +117,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                   (!isOccasionValid()
                   && invalidOccasionErrorMsg)
                   ? <p data-testid={HTML_TEXTS.dataTestId.occasionErrorMsg}>{invalidOccasionErrorMsg}</p>
-                  : AppConstants.NULL}
+                  : NULL}
             </div>
             <button
                 aria-label={HTML_TEXTS.ariaLabel.onClick}
@@ -123,7 +125,7 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 type={HTML_TEXTS.type.submit}
                 disabled={!areAllFieldsValid()}
             >
-                {AppConstants.BOOKING_FORM_TEXTS.get('buttonText').text}
+                {BOOKING_FORM_TEXTS.get('buttonText').text}
             </button>
         </form>
     );
