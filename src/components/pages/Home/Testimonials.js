@@ -9,7 +9,6 @@ import './assets/styles/Testimonials.css';
 
 const HTML_TEXTS = AppConstants.HTML_TEXTS;
 const HOME_TEXTS = AppConstants.HOME_TEXTS;
-const LINKS = AppConstants.LINKS;
 
 const reviews = [
     {
@@ -42,16 +41,16 @@ const ratingLevels = {'0.5': faStarHalfStroke, '1': faStar, };
 
 const Testimonials = () => {
     return (
-        <section className="testimonials">
-            <div className="container grid">
-                <h2>Testimonials</h2>
+        <section className={HTML_TEXTS.className.testimonials}>
+            <div className={HTML_TEXTS.className.containerGrid}>
+                <h2>{HOME_TEXTS.get('testimonials').text}</h2>
                 {reviews.map((review, index01) =>
-                    <article key={index01} className='testimonial-card'>
+                    <article key={index01} className={HTML_TEXTS.className.testimonialCard}>
                         <img src={review.customerPhoto} alt={review.customerName} />
                         <h4>{review.customerName}</h4>
                         <span>
                             {review.rating.map((rate, index02) =>
-                                <FontAwesomeIcon key={index02} icon={ratingLevels[rate]} size='xs' />
+                                <FontAwesomeIcon key={index02} icon={ratingLevels[rate]} size={AppConstants.SIZE.xs} />
                             )}
                         </span>
                         <blockquote><p>"{review.review}"</p></blockquote>

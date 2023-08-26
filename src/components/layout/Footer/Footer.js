@@ -6,19 +6,23 @@ import AppConstants from '../../../common/constants';
 import FooterLogo from '../assets/images/footer-logo.png';
 import '../assets/styles/Footer.css';
 
-const navLinks = Array.from(AppConstants.LINKS.values()).filter(link => link.isLinkVisibleOnNav);
+const HTML_TEXTS = AppConstants.HTML_TEXTS;
+const FOOTER_TEXTS = AppConstants.FOOTER_TEXTS;
+const LINKS = AppConstants.LINKS;
+
+const navLinks = Array.from(LINKS.values()).filter(link => link.isLinkVisibleOnNav);
 
 const contacts = [
-    { icon: faLocationDot, info: 'XYZ Street, Chicago, IL', },
-    { icon: faPhone, info: '(321) 456-7890', },
-    { icon: faEnvelope, info: 'contact@littlelemon.com', },
+    { icon: faLocationDot, info: FOOTER_TEXTS.get('contacts').location, },
+    { icon: faPhone, info: FOOTER_TEXTS.get('contacts').phone, },
+    { icon: faEnvelope, info: FOOTER_TEXTS.get('contacts').email, },
 ];
 
 const socials = [
-    { icon: faFacebook, name: 'facebook', },
-    { icon: faTwitter, name: 'twitter', },
-    { icon: faInstagram, name: 'instagram', },
-    { icon: faYoutube, name: 'youtube', },
+    { icon: faFacebook, name: FOOTER_TEXTS.get('socials').facebook, },
+    { icon: faTwitter, name: FOOTER_TEXTS.get('socials').twitter, },
+    { icon: faInstagram, name: FOOTER_TEXTS.get('socials').instagram, },
+    { icon: faYoutube, name: FOOTER_TEXTS.get('socials').youtube, },
 ];
 
 const Footer = () => {
