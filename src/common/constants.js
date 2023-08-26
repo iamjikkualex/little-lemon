@@ -16,6 +16,22 @@ const APP_CONSTANTS = {
         ['confirmReservation', {name: 'Confirm Reservation', path: '/confirm-reservation', isLinkVisibleOnNav: false}]
     ]),
     OCCASIONS: ['Birthday', 'Anniversary'],
+    HOME_TEXTS: new Map([
+        ['littleLemon', {text: 'Little Lemon'}],
+        ['chicago', {text: 'Chicago'}],
+        ['heroDesc', {text: 'We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.'}],
+        ['reserveTable', {text: 'Reserve a Table'}],
+        ['specials', {text: 'Specials'}],
+        ['greekSalad', {name: 'Greek Salad', price: '$12.99', desc: 'The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.'}],
+        ['bruschetta', {name: 'Bruschetta', price: '$7.99', desc: 'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.'}],
+        ['lemonDessert', {name: 'Lemon Dessert', price: '$5.99', desc: 'A simple, zingy, creamy no-bake tasty lemon dessert with impressive pud, light enough to have a slice to finish a big meal.'}],
+        ['onlineMenu', {text: 'Online Menu'}],
+        ['orderDelivery', {text: 'Order a Delivery'}],
+        ['customerOne', {name: 'Ann Ben', rating: [1, 1, 1, 1], review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}],
+        ['customerTwo', {name: 'Matthew Henry', rating: [1, 1, 1], review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}],
+        ['customerThree', {name: 'Jeff Haris', rating: [1, 1, 1, 0.5], review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}],
+        ['customerFour', {name: 'Kris Tom', rating: [1, 1, 1, 1, 0.5], review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}],
+    ]),
     BOOKING_FORM_TEXTS: new Map([
         ['chooseDate', {text: 'Choose Date'}],
         ['chooseTime', {text: 'Choose Time'}],
@@ -47,9 +63,19 @@ const APP_CONSTANTS = {
     },
     HTML_TEXTS: {
         className: {
+            hero: 'hero',
+            heroInformation: 'hero-information',
+            heroImage: 'hero-image',
+            highlightsHeader: 'highlights-header',
             formField: 'form-field',
             buttonPrimary: 'button-primary',
             bookings: 'bookings',
+            specialCard: 'special-card',
+            specialCardImage: 'special-card-image',
+            specialCardHeader: 'special-card-header',
+            specialCardBody: 'special-card-body',
+            containerGrid: 'container grid',
+            highlightsSection: 'container grid highlights',
             confirmedBookingDiv: 'container confirmed-booking',
             underMaintenancePageDiv: 'container under-maintenance',
             notFoundPageDiv: 'container not-found',
@@ -87,6 +113,9 @@ const APP_CONSTANTS = {
         },
         ariaLabel: {
             onClick: 'On Click',
+        },
+        alt: {
+            restaurantFood: 'Restaurant Food',
         }
     }
 };

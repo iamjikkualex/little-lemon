@@ -2,6 +2,9 @@ import { useState } from 'react';
 import {getMinDate, getMaxDate} from '../../../common/utils';
 import AppConstants from '../../../common/constants';
 
+const HTML_TEXTS = AppConstants.HTML_TEXTS;
+const BOOKING_FORM_TEXTS = AppConstants.BOOKING_FORM_TEXTS;
+
 const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
     const [bookingDate, setBookingDate] = useState(getMinDate());
     const [bookingTime, setBookingTime] = useState(availableTimes[0]);
@@ -9,16 +12,16 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
     const [occasion, setOccasion] = useState(AppConstants.OCCASIONS[0]);
 
     let isBookingDateValid = () => bookingDate !== AppConstants.EMPTY && bookingDate >= getMinDate() && bookingDate <= getMaxDate();
-    let invalidBookingDateErrorMsg = AppConstants.BOOKING_FORM_TEXTS.get('invalidBookingDateErrorMsg').text;
+    let invalidBookingDateErrorMsg = BOOKING_FORM_TEXTS.get('invalidBookingDateErrorMsg').text;
 
     let isBookingTimeValid = () => bookingTime !== AppConstants.EMPTY;
-    let invalidBookingTimeErrorMsg = AppConstants.BOOKING_FORM_TEXTS.get('invalidBookingTimeErrorMsg').text;
+    let invalidBookingTimeErrorMsg = BOOKING_FORM_TEXTS.get('invalidBookingTimeErrorMsg').text;
 
     let isNoOfGuestsValid = () => noOfGuests !== AppConstants.EMPTY && noOfGuests >= 1 && noOfGuests <= 10;
-    let invalidNoOfGuestsErrorMsg = AppConstants.BOOKING_FORM_TEXTS.get('invalidNoOfGuestsErrorMsg').text;
+    let invalidNoOfGuestsErrorMsg = BOOKING_FORM_TEXTS.get('invalidNoOfGuestsErrorMsg').text;
 
     let isOccasionValid = () => occasion !== AppConstants.EMPTY;
-    let invalidOccasionErrorMsg = AppConstants.BOOKING_FORM_TEXTS.get('invalidOccasionErrorMsg').text;
+    let invalidOccasionErrorMsg = BOOKING_FORM_TEXTS.get('invalidOccasionErrorMsg').text;
 
     const areAllFieldsValid = () => isBookingDateValid() && isBookingTimeValid() && isNoOfGuestsValid() && isOccasionValid();
 
@@ -34,12 +37,12 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
 
     return (
         <form onSubmit={handleFormSubmit}>
-            <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.resDate}>{AppConstants.BOOKING_FORM_TEXTS.get('chooseDate').text}</label>
+            <div className={HTML_TEXTS.className.formField}>
+                <label htmlFor={HTML_TEXTS.htmlFor.resDate}>{BOOKING_FORM_TEXTS.get('chooseDate').text}</label>
                 <input
-                    type={AppConstants.HTML_TEXTS.type.date}
-                    id={AppConstants.HTML_TEXTS.id.resDate}
-                    name={AppConstants.HTML_TEXTS.name.resDate}
+                    type={HTML_TEXTS.type.date}
+                    id={HTML_TEXTS.id.resDate}
+                    name={HTML_TEXTS.name.resDate}
                     min={getMinDate()}
                     max={getMaxDate()}
                     value={bookingDate}
@@ -49,21 +52,21 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 {
                   (!isBookingDateValid()
                   && invalidBookingDateErrorMsg)
-                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.dateErrorMsg}>{invalidBookingDateErrorMsg}</p>
+                  ? <p data-testid={HTML_TEXTS.dataTestId.dateErrorMsg}>{invalidBookingDateErrorMsg}</p>
                   : AppConstants.NULL
                 }
             </div>
-            <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.resTime}>{AppConstants.BOOKING_FORM_TEXTS.get('chooseTime').text}</label>
+            <div className={HTML_TEXTS.className.formField}>
+                <label htmlFor={HTML_TEXTS.htmlFor.resTime}>{BOOKING_FORM_TEXTS.get('chooseTime').text}</label>
                 <select
-                    id={AppConstants.HTML_TEXTS.id.resTime}
-                    name={AppConstants.HTML_TEXTS.name.resTime}
+                    id={HTML_TEXTS.id.resTime}
+                    name={HTML_TEXTS.name.resTime}
                     value={bookingTime}
                     onChange={e => setBookingTime(e.target.value)}
                     required
                 >
                     {availableTimes.map(time =>
-                        <option data-testid={AppConstants.HTML_TEXTS.dataTestId.bookingTimeOption} key={time}>
+                        <option data-testid={HTML_TEXTS.dataTestId.bookingTimeOption} key={time}>
                             {time}
                         </option>
                     )}
@@ -71,16 +74,16 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 {
                   (!isBookingTimeValid()
                   && invalidBookingTimeErrorMsg)
-                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.timeErrorMsg}>{invalidBookingTimeErrorMsg}</p>
+                  ? <p data-testid={HTML_TEXTS.dataTestId.timeErrorMsg}>{invalidBookingTimeErrorMsg}</p>
                   : AppConstants.NULL
                 }
             </div>
-            <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.guests}>{AppConstants.BOOKING_FORM_TEXTS.get('noOfGuests').text}</label>
+            <div className={HTML_TEXTS.className.formField}>
+                <label htmlFor={HTML_TEXTS.htmlFor.guests}>{BOOKING_FORM_TEXTS.get('noOfGuests').text}</label>
                 <input
-                    type={AppConstants.HTML_TEXTS.type.number}
-                    id={AppConstants.HTML_TEXTS.id.guests}
-                    name={AppConstants.HTML_TEXTS.name.guests}
+                    type={HTML_TEXTS.type.number}
+                    id={HTML_TEXTS.id.guests}
+                    name={HTML_TEXTS.name.guests}
                     min={AppConstants.MIN_NO_OF_GUESTS}
                     max={AppConstants.MAX_NO_OF_GUESTS}
                     value={noOfGuests}
@@ -90,20 +93,20 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 {
                   (!isNoOfGuestsValid()
                   && invalidNoOfGuestsErrorMsg)
-                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.guestsErrorMsg}>{invalidNoOfGuestsErrorMsg}</p>
+                  ? <p data-testid={HTML_TEXTS.dataTestId.guestsErrorMsg}>{invalidNoOfGuestsErrorMsg}</p>
                   : AppConstants.NULL}
             </div>
-            <div className={AppConstants.HTML_TEXTS.className.formField}>
-                <label htmlFor={AppConstants.HTML_TEXTS.htmlFor.occasion}>{AppConstants.BOOKING_FORM_TEXTS.get('occasion').text}</label>
+            <div className={HTML_TEXTS.className.formField}>
+                <label htmlFor={HTML_TEXTS.htmlFor.occasion}>{BOOKING_FORM_TEXTS.get('occasion').text}</label>
                 <select
-                    id={AppConstants.HTML_TEXTS.id.occasion}
-                    name={AppConstants.HTML_TEXTS.name.occasion}
+                    id={HTML_TEXTS.id.occasion}
+                    name={HTML_TEXTS.name.occasion}
                     value={occasion}
                     onChange={e => setOccasion(e.target.value)}
                     required
                 >
                     {AppConstants.OCCASIONS.map((occasion, index) =>
-                        <option data-testid={AppConstants.HTML_TEXTS.dataTestId.bookingOccasionOption} key={index}>
+                        <option data-testid={HTML_TEXTS.dataTestId.bookingOccasionOption} key={index}>
                             {occasion}
                         </option>
                     )}
@@ -111,13 +114,13 @@ const BookingForm = ({availableTimes, dispatchOnDateChange, submitForm}) => {
                 {
                   (!isOccasionValid()
                   && invalidOccasionErrorMsg)
-                  ? <p data-testid={AppConstants.HTML_TEXTS.dataTestId.occasionErrorMsg}>{invalidOccasionErrorMsg}</p>
+                  ? <p data-testid={HTML_TEXTS.dataTestId.occasionErrorMsg}>{invalidOccasionErrorMsg}</p>
                   : AppConstants.NULL}
             </div>
             <button
-                aria-label={AppConstants.HTML_TEXTS.ariaLabel.onClick}
-                className={AppConstants.HTML_TEXTS.className.buttonPrimary}
-                type={AppConstants.HTML_TEXTS.type.submit}
+                aria-label={HTML_TEXTS.ariaLabel.onClick}
+                className={HTML_TEXTS.className.buttonPrimary}
+                type={HTML_TEXTS.type.submit}
                 disabled={!areAllFieldsValid()}
             >
                 {AppConstants.BOOKING_FORM_TEXTS.get('buttonText').text}

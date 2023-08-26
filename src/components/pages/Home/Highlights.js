@@ -7,49 +7,53 @@ import lemonDessertImage from './assets/images/lemon-dessert.jpg';
 import AppConstants from '../../../common/constants';
 import './assets/styles/Highlights.css';
 
+const HTML_TEXTS = AppConstants.HTML_TEXTS;
+const HOME_TEXTS = AppConstants.HOME_TEXTS;
+const LINKS = AppConstants.LINKS;
+
 const specials = [
     {
-        name: 'Greek Salad',
+        name: HOME_TEXTS.get('greekSalad').name,
         image: greekSaladImage,
-        price: '$12.99',
-        description: 'The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.',
+        price: HOME_TEXTS.get('greekSalad').price,
+        description: HOME_TEXTS.get('greekSalad').desc,
     },
     {
-        name: 'Bruschetta',
+        name: HOME_TEXTS.get('bruschetta').name,
         image: bruschettaImage,
-        price: '$7.99',
-        description: 'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.',
+        price: HOME_TEXTS.get('bruschetta').price,
+        description: HOME_TEXTS.get('bruschetta').desc,
     },
     {
-        name: 'Lemon Dessert',
+        name: HOME_TEXTS.get('lemonDessert').name,
         image: lemonDessertImage,
-        price: '$5.99',
-        description: 'A simple, zingy, creamy no-bake tasty lemon dessert with impressive pud, light enough to have a slice to finish a big meal.'
+        price: HOME_TEXTS.get('lemonDessert').price,
+        description: HOME_TEXTS.get('lemonDessert').desc,
     },
 ];
 
 const Highlights = () => {
     return (
-        <section className="container grid highlights">
-            <div className="highlights-header">
-                <h2>Specials</h2>
-                <Link className='button-primary' to={AppConstants.LINKS.get('orderOnline').path}>
-                    Online Menu
+        <section className={HTML_TEXTS.className.highlightsSection}>
+            <div className={HTML_TEXTS.className.highlightsHeader}>
+                <h2>{HOME_TEXTS.get('specials').text}</h2>
+                <Link className={HTML_TEXTS.className.buttonPrimary} to={LINKS.get('orderOnline').path}>
+                    {HOME_TEXTS.get('onlineMenu').text}
                 </Link>
             </div>
             {specials.map((special, index) =>
-                <article key={index} className='special-card'>
-                    <div className='special-card-image'>
+                <article key={index} className={HTML_TEXTS.className.specialCard}>
+                    <div className={HTML_TEXTS.className.specialCardImage}>
                         <img src={special.image} alt={special.name} />
                     </div>
-                    <div className='special-card-header'>
+                    <div className={HTML_TEXTS.className.specialCardHeader}>
                         <h3>{special.name}</h3>
                         <span>{special.price}</span>
                     </div>
-                    <div className='special-card-body'>
+                    <div className={HTML_TEXTS.className.specialCardBody}>
                         <p>{special.description}</p>
-                        <Link to={AppConstants.LINKS.get('orderOnline').path}>
-                            Order a Delivery <FontAwesomeIcon icon={faMotorcycle} />
+                        <Link to={LINKS.get('orderOnline').path}>
+                            {HOME_TEXTS.get('orderDelivery').text} <FontAwesomeIcon icon={faMotorcycle} />
                         </Link>
                     </div>
                 </article>

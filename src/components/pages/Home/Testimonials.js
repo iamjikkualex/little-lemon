@@ -4,32 +4,37 @@ import customer01Photo from './assets/images/customer_01.jpg';
 import customer02Photo from './assets/images/customer_02.jpg';
 import customer03Photo from './assets/images/customer_03.jpg';
 import customer04Photo from './assets/images/customer_04.jpg';
+import AppConstants from '../../../common/constants';
 import './assets/styles/Testimonials.css';
+
+const HTML_TEXTS = AppConstants.HTML_TEXTS;
+const HOME_TEXTS = AppConstants.HOME_TEXTS;
+const LINKS = AppConstants.LINKS;
 
 const reviews = [
     {
-        customerName: 'Ann Ben',
+        customerName: HOME_TEXTS.get('customerOne').name,
         customerPhoto: customer01Photo,
-        rating: [1, 1, 1, 1],
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        rating: HOME_TEXTS.get('customerOne').rating,
+        review: HOME_TEXTS.get('customerOne').review,
     },
     {
-        customerName: 'Matthew Henry',
+        customerName: HOME_TEXTS.get('customerTwo').name,
         customerPhoto: customer02Photo,
-        rating: [1, 1, 1],
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        rating: HOME_TEXTS.get('customerTwo').rating,
+        review: HOME_TEXTS.get('customerTwo').review,
     },
     {
-        customerName: 'Jeff Haris',
+        customerName: HOME_TEXTS.get('customerThree').name,
         customerPhoto: customer03Photo,
-        rating: [1, 1, 1, 0.5],
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        rating: HOME_TEXTS.get('customerThree').rating,
+        review: HOME_TEXTS.get('customerThree').review,
     },
     {
-        customerName: 'Kris Tom',
+        customerName: HOME_TEXTS.get('customerFour').name,
         customerPhoto: customer04Photo,
-        rating: [1, 1, 1, 1, 0.5],
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        rating: HOME_TEXTS.get('customerFour').rating,
+        review: HOME_TEXTS.get('customerFour').review,
     },
 ];
 
